@@ -27,5 +27,7 @@ Now that keys have been generated, you should see two new keys, a QRCode, and a 
 
 ![image](https://user-images.githubusercontent.com/49264993/127431351-06e34a39-c3f5-4bc1-a420-88f40bba798c.png)
 
+And the final step! just put these keys in database.py at woocommerce function and we're ready to go :D
+
 
 
