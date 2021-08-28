@@ -1,6 +1,6 @@
 # Telegrambot-FinalProject
 
-Telegram Book Store Bot that connects to any wordpress site(in this case our Book shop) using woocommerce-rest-api and show it's products in bot to our customers.
+Telegram Book Store Bot that connects to any wordpress site (in this case our Book shop) using woocommerce-rest-api and show it's products in bot to our customers.
 
 ## Requirements
 - [Python 3.8 (or higher)](https://www.python.org/)
