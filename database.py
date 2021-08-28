@@ -210,13 +210,15 @@ def set_phone_number_to_user(user_id, phone):
 # ============================================================================
 
 # creating operator
-new_user_operator("98948374", "Alireza", "@Bookworm98", "None",1)
+# insert operator's (chat_id, first_name, username, phone_number,is_operator) in the function below .
+# new_user_operator("", "", "", "",1)
 
 # Connecting to Woocommerce
+# insert your site data here
 wcapi = API(
     url="http://localhost/wordpress/", # Your store URL
-    consumer_key="ck_0fc9b7b3a719f64e44bff8bc41dfd0aba71f0cc7", # Your consumer key
-    consumer_secret="cs_bacf34af6a5f7fc0051be013b357f9f1fe640117", # Your consumer secret
+    consumer_key="", # Your consumer key
+    consumer_secret="", # Your consumer secret
     wp_api=True, # Enable the WP REST API integration
     version="wc/v3" # WooCommerce WP REST API version
 )
