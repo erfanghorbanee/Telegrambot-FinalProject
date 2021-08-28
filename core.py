@@ -5,7 +5,7 @@ import bot_functions as bf
 
 def main():
     # This is our Telegram bot token. You can get one here -> https://t.me/BotFather
-    token = "123456:abcdefghijklmn"
+    token = "add your token here..."
     
     try:
         bot = telebot.TeleBot(token)
