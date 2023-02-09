@@ -1,5 +1,6 @@
 import json
-from database import new_order, get_orders_by_id
+
+from database import get_orders_by_id, new_order
 
 
 class Order:

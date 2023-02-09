@@ -1,4 +1,5 @@
 from database import get_products
+
 # from WooCommerce import get_data
 
 # id, name, info, price, img, category_id(1....10),  bot-show(1.....1)
@@ -6,6 +7,7 @@ from database import get_products
 # for i in get_products():
 #     print(i[6])     #7
 # print(get_products())
+
 
 class Catalog:
     def __init__(self, chat_id):

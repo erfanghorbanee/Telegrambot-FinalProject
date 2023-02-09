@@ -1,9 +1,10 @@
-items = {"catalog": "📘 Catalog",
-         "cart": "🛒 Basket",
-         "orders": "📜 Orders",
-         "faq": "❓ About Bot",
-         "contacts": "📱 Contacts"
-         }
+items = {
+    "catalog": "📘 Catalog",
+    "cart": "🛒 Basket",
+    "orders": "📜 Orders",
+    "faq": "❓ About Bot",
+    "contacts": "📱 Contacts",
+}
 catalog = items["catalog"]
 cart = items["cart"]
 orders = items["orders"]
@@ -14,13 +15,17 @@ contacts = items["contacts"]
 faq_text = "<b>🤖 Hello! \n\nThis bot helps you to buy your favourite books from your favourite shop!\n\n⚡️ Powered by Python</b>"
 
 # Contacts text
-contacts_text = "You can always write to us!\n\n" \
-                "Contacts us from one of these ways:\n" \
-                "Admin ID: @Bookworm98\n" \
-                "Email: erfanghorbanee@gmail.com"
+contacts_text = (
+    "You can always write to us!\n\n"
+    "Contacts us from one of these ways:\n"
+    "Admin ID: @Bookworm98\n"
+    "Email: erfanghorbanee@gmail.com"
+)
 
 # If the message is unrecognized
-unrecognized_message = "We could not recognize your message, please try /help to learn more."
+unrecognized_message = (
+    "We could not recognize your message, please try /help to learn more."
+)
 
 # If no one product in catalog
 no_prods_in_catalog = "It's empty here"
@@ -38,8 +43,10 @@ amount = "PC."
 cart_is_empty = "Basket is empty"
 
 # Help
-help_text = "To start working with this bot, you need to write <b>/start</b>\n" \
+help_text = (
+    "To start working with this bot, you need to write <b>/start</b>\n"
     "then press the <b>Catalog</b>, select a product, order through the basket\n"
+)
 
 # Order
 no_orders_text = "Make an order to see it here!"
@@ -58,9 +65,9 @@ order_false_btn = "No cancel"
 order_true = "Thank you! Our manager will contact you to clarify all the details."
 order_false = "We've moved you to the main menu, but your cart is still there"
 params_text = {
-                    "city": "City",
-                    "number_of_departament": "National number",
-                    "full_name": "Full name",
-                    "number": "phone number",
-                    "payment_system": "Payment"
-                }
+    "city": "City",
+    "number_of_departament": "National number",
+    "full_name": "Full name",
+    "number": "phone number",
+    "payment_system": "Payment",
+}

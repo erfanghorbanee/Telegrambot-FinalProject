@@ -1,20 +1,20 @@
 import telebot
 from telebot import types
+
 import bot_functions as bf
 
 
 def main():
     # This is our Telegram bot token. You can get one here -> https://t.me/BotFather
     token = "add your token here..."
-    
+
     try:
         bot = telebot.TeleBot(token)
         bot.get_me()
-        print('Connection to the bot was successful!')
+        print("Connection to the bot was successful!")
 
     except telebot.apihelper.ApiException:
-        print('A request to the Telegram API was unsuccessful.')
-
+        print("A request to the Telegram API was unsuccessful.")
 
     print("Book Store is started!")
 
@@ -29,7 +29,7 @@ def main():
 
     @bot.message_handler(content_types=["text"])
     def message_handler(message):
-        if message.chat.type == 'private':
+        if message.chat.type == "private":
             bf.handler(bot, types, message, None)
 
     @bot.callback_query_handler(func=lambda call: True)
@@ -39,5 +39,5 @@ def main():
     bot.polling(none_stop=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

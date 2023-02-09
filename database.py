@@ -1,7 +1,8 @@
-import requests
-import sqlite3
 import logging
 import re
+import sqlite3
+
+import requests
 from woocommerce import API
 
 # Initializing logs
@@ -15,7 +16,8 @@ with conn:
     cursor = conn.cursor()
 
     # Creating user table if not exists
-    cursor.executescript("""CREATE TABLE IF NOT EXISTS users
+    cursor.executescript(
+        """CREATE TABLE IF NOT EXISTS users
         (
              chat_id INTEGER not null
                 primary key,
@@ -27,10 +29,12 @@ with conn:
             is_operator BOOLEAN,
             is_administrator BOOLEAN
         );
-        """)
+        """
+    )
 
-        # Creating operator table if not exists
-    cursor.executescript("""CREATE TABLE IF NOT EXISTS operator
+    # Creating operator table if not exists
+    cursor.executescript(
+        """CREATE TABLE IF NOT EXISTS operator
         (
              chat_id INTEGER not null
             primary key,
@@ -42,19 +46,23 @@ with conn:
             is_operator BOOLEAN,
             is_administrator BOOLEAN
         );
-        """)
+        """
+    )
 
     # Creating category table if not exists
-    cursor.executescript("""CREATE TABLE IF NOT EXISTS categories
+    cursor.executescript(
+        """CREATE TABLE IF NOT EXISTS categories
         (
              category_id INTEGER not null
                 primary key autoincrement,
             title VARCHAR
         );
-        """)
+        """
+    )
 
     # Creating products table if not exists
-    cursor.executescript("""CREATE TABLE IF NOT EXISTS products
+    cursor.executescript(
+        """CREATE TABLE IF NOT EXISTS products
         (
              id INTEGER not null
                 primary key autoincrement,
@@ -65,10 +73,12 @@ with conn:
             category_id INTEGER,
             bot_shows BOOLEAN
         );
-        """)
+        """
+    )
 
     # Creating orders table if not exists
-    cursor.executescript("""CREATE TABLE IF NOT EXISTS orders
+    cursor.executescript(
+        """CREATE TABLE IF NOT EXISTS orders
         (
              order_id INTEGER not null
                 primary key autoincrement,
@@ -79,7 +89,8 @@ with conn:
             status INTEGER,
             note TEXT
         );
-        """)
+        """
+    )
     conn.commit()
 
 
@@ -94,36 +105,48 @@ def if_user_exists(chat_id):
 
 
 def new_user(chat_id, first_name, username, phone_number):
-    cursor.execute("""INSERT INTO users (chat_id, first_name, username, phone_number, is_making_order, is_operator,
+    cursor.execute(
+        """INSERT INTO users (chat_id, first_name, username, phone_number, is_making_order, is_operator,
      is_administrator) VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (chat_id, first_name, username, phone_number, 0, 0, 0))
+    """,
+        (chat_id, first_name, username, phone_number, 0, 0, 0),
+    )
     conn.commit()
 
-def new_user_operator(chat_id, first_name, username, phone_number,is_operator):
-    cursor.execute("""INSERT INTO operator (chat_id, first_name, username, phone_number, is_making_order, is_operator,
+
+def new_user_operator(chat_id, first_name, username, phone_number, is_operator):
+    cursor.execute(
+        """INSERT INTO operator (chat_id, first_name, username, phone_number, is_making_order, is_operator,
      is_administrator) VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (chat_id, first_name, username, phone_number, 0, 1, 0))
+    """,
+        (chat_id, first_name, username, phone_number, 0, 1, 0),
+    )
     conn.commit()
 
 
 def new_order(chat_id, contacts, order_items, order_date, status, note):
-    cursor.execute("""
+    cursor.execute(
+        """
     INSERT INTO orders (chat_id, contacts, order_items, order_date, status, note) 
     VALUES (?, ?, ?, ?, ?, ?)
-    """, (chat_id, contacts, order_items, order_date, status, note))
+    """,
+        (chat_id, contacts, order_items, order_date, status, note),
+    )
     conn.commit()
 
 
 def add_category(title):
-    cursor.execute("INSERT INTO category (title) VALUES (?)",
-                   [title])
+    cursor.execute("INSERT INTO category (title) VALUES (?)", [title])
     conn.commit()
     log.debug(f"Added category: {title}")
 
 
 def add_product(title, description, price, image, category_id):
-    cursor.execute("""INSERT INTO products (title, description, price, image, category_id, bot_shows) 
-    VALUES (?, ?, ?, ?, ?, ?)""", (title, description, price, image, category_id, 1))
+    cursor.execute(
+        """INSERT INTO products (title, description, price, image, category_id, bot_shows) 
+    VALUES (?, ?, ?, ?, ?, ?)""",
+        (title, description, price, image, category_id, 1),
+    )
     conn.commit()
 
 
@@ -192,21 +215,32 @@ def get_operators():
 
 
 def set_cart_to_user(user_id, cart):
-    cursor.executemany("""UPDATE users 
-    SET cart = ? WHERE chat_id = ?""", ((cart, user_id), ))
+    cursor.executemany(
+        """UPDATE users 
+    SET cart = ? WHERE chat_id = ?""",
+        ((cart, user_id),),
+    )
     conn.commit()
 
 
 def set_making_order_status_to_user(user_id, status):
-    cursor.executemany("""UPDATE users 
-    SET is_making_order = ? WHERE chat_id = ?""", ((status, user_id), ))
+    cursor.executemany(
+        """UPDATE users 
+    SET is_making_order = ? WHERE chat_id = ?""",
+        ((status, user_id),),
+    )
     conn.commit()
 
 
 def set_phone_number_to_user(user_id, phone):
-    cursor.executemany("""UPDATE users 
-    SET phone_number = ? WHERE chat_id = ?""", ((phone, user_id), ))
+    cursor.executemany(
+        """UPDATE users 
+    SET phone_number = ? WHERE chat_id = ?""",
+        ((phone, user_id),),
+    )
     conn.commit()
+
+
 # ============================================================================
 
 # creating operator
@@ -216,32 +250,38 @@ def set_phone_number_to_user(user_id, phone):
 # Connecting to Woocommerce
 # insert your site data here
 wcapi = API(
-    url="http://localhost/wordpress/", # Your store URL
-    consumer_key="", # Your consumer key
-    consumer_secret="", # Your consumer secret
-    wp_api=True, # Enable the WP REST API integration
-    version="wc/v3" # WooCommerce WP REST API version
+    url="http://localhost/wordpress/",  # Your store URL
+    consumer_key="",  # Your consumer key
+    consumer_secret="",  # Your consumer secret
+    wp_api=True,  # Enable the WP REST API integration
+    version="wc/v3",  # WooCommerce WP REST API version
 )
 
 # Removes html tags from description we got out of woocommerce
 def cleanhtml(raw_html):
-    cleanr = re.compile('<.*?>')
-    cleantext = re.sub(cleanr, '', raw_html)
+    cleanr = re.compile("<.*?>")
+    cleantext = re.sub(cleanr, "", raw_html)
     return cleantext
-  
+
 
 # Get products from woocommerce
 def get_woocommerce_products():
     count = 0
     for i in wcapi.get("products").json():
-    
+
         img_data = requests.get(i["images"][0]["src"]).content
-        with open("images/item_"+str(count)+".png", 'wb') as handler:
+        with open("images/item_" + str(count) + ".png", "wb") as handler:
             handler.write(img_data)
-            
-        add_product(i["name"], cleanhtml(i["description"]), i["price"],
-                    ("images/item_"+str(count)+".png"), i["id"])
-        
+
+        add_product(
+            i["name"],
+            cleanhtml(i["description"]),
+            i["price"],
+            ("images/item_" + str(count) + ".png"),
+            i["id"],
+        )
+
         count += 1
-        
+
+
 get_woocommerce_products()
