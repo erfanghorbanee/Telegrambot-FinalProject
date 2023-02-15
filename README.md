@@ -4,7 +4,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Telegram Book Store Bot that connects to any WordPress site (in this case our Book shop) using woocommerce-rest-api and show it's products in bot to our customers.
+Telegram Book Store Bot that connects to any WordPress site (in this case our Book shop) using woocommerce-rest-api and shows its products in the bot to our customers.
 
 ## Requirements
 - [Python 3.8 (or higher)](https://www.python.org/)
